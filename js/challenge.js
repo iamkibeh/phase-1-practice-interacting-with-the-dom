@@ -4,8 +4,8 @@ const counter = document.getElementById("counter")
 const heart = document.getElementById("heart")
 const likesDes = document.querySelector(".likes")
 const pause = document.getElementById("pause")
-
-
+const form = document.getElementById("comment-form")
+const commentInput = document.getElementById("comment-input")
 
 // console.log(likesDes[0].textContent)
 plus.addEventListener("click", increment);
@@ -37,6 +37,7 @@ function likeFn(){
 
 // pause function
 
+
 let ticking = true;
 function pauseFn (){
     if(ticking){
@@ -54,6 +55,7 @@ incrementCounter()
 
 // incrementing counter every second
 
+
 let seconds = 0;
 let incrementSeconds = ()=>{
     seconds +=1;
@@ -65,3 +67,13 @@ function incrementCounter(){
 }
 incrementCounter()
 
+// comments section
+
+form.addEventListener("submit", handleSubmit);
+
+function handleSubmit(e) {
+    e.preventDefault();
+    let newComment = commentInput.value;
+    document.querySelector("#list").innerHTML += `<p>${newComment}</p>`
+    form.reset()
+}
